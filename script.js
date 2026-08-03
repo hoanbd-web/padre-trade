@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    /*
     // CẤU HÌNH LINK AFFILIATE (ĐÃ MÃ HÓA BASE64 ĐỂ TRÁNH BOT QUÉT QUẢNG CÁO PHÁT HIỆN CHUYỂN HƯỚNG)
     // Link gốc hiện tại: https://trade.padre.gg/rk/someone6868
     // CÁCH THAY LINK CỦA BẠN:
@@ -24,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.stopPropagation();
         window.open(redirectUrl, '_blank'); // Mở link ref ở tab mới
     });
+    */
 
     // 1. Navigation scroll styling
     const header = document.querySelector('header');
