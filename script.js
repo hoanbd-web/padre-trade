@@ -365,7 +365,7 @@ document.addEventListener('DOMContentLoaded', () => {
             swapBtn.style.opacity = '0.5';
             swapBtn.textContent = 'EXECUTING...';
 
-            addTerminalLog(`[TX] Initiating Memecoin swap via ${currentChain} chain. Size: ${amount} ${chainTokens[currentChain]}`);
+            addTerminalLog(`[TX] Initiating token swap via ${currentChain} chain. Size: ${amount} ${chainTokens[currentChain]}`);
             
             setTimeout(() => {
                 addTerminalLog('[TX] Routing through MEV-protected liquidity pools...');
@@ -381,7 +381,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 addTerminalLog(`SUCCESS: Transaction confirmed on-chain!`);
                 addTerminalLog(`HASH: ${txHash.slice(0, 10)}...${txHash.slice(-8)}`);
                 
-                createToast(`Transaction successful! Received Memecoin tokens.`);
+                createToast(`Transaction successful! Received token tokens.`);
                 chartSpike();
 
                 swapBtn.disabled = false;
