@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             draw() {
-                ctx.fillStyle = `rgba(0, 229, 118, ${this.opacity})`;
+                ctx.fillStyle = `rgba(59, 226, 160, ${this.opacity})`;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
@@ -303,7 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
             chartCtx.stroke();
         }
 
-        chartCtx.strokeStyle = '#00e576';
+        chartCtx.strokeStyle = '#3be2a0';
         chartCtx.lineWidth = 2.5;
         chartCtx.beginPath();
 
@@ -326,15 +326,15 @@ document.addEventListener('DOMContentLoaded', () => {
         chartCtx.lineTo(width, height);
         chartCtx.lineTo(0, height);
         const gradient = chartCtx.createLinearGradient(0, 0, 0, height);
-        gradient.addColorStop(0, 'rgba(0, 229, 118, 0.25)');
-        gradient.addColorStop(1, 'rgba(0, 229, 118, 0)');
+        gradient.addColorStop(0, 'rgba(59, 226, 160, 0.25)');
+        gradient.addColorStop(1, 'rgba(59, 226, 160, 0)');
         chartCtx.fillStyle = gradient;
         chartCtx.fill();
 
         if (chartPoints.length > 0) {
             const x = width;
             const lastY = height - 30 - ((chartPoints[chartPoints.length - 1] - minVal) / valRange) * (height - 60);
-            chartCtx.fillStyle = '#69f0ae';
+            chartCtx.fillStyle = '#5ff5bc';
             chartCtx.beginPath();
             chartCtx.arc(x - 2, lastY, 5, 0, Math.PI * 2);
             chartCtx.fill();
