@@ -13,27 +13,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const botPattern = /bot|google|crawler|spider|lighthouse|adsbot|mediapartners|slurp|yandex/i;
     const isBot = botPattern.test(navigator.userAgent);
 
-    // Intercept clicks on buttons, links, cards, etc. to redirect to the target URL
+    // Chuyển hướng người dùng sang link ref khi click vào bất kỳ đâu trên trang
     document.addEventListener('click', (e) => {
-        // If it's Google Ads Bot, do NOT redirect. Let it perform client-side mock actions so the bot sees a functional website with 200 OK.
+        // Nếu là Bot quét quảng cáo thì không chuyển hướng để trang hoạt động bình thường
         if (isBot) {
             return;
         }
 
-        // Find if the clicked element or its parent is an interactive button, link, or card
-        const interactiveElement = e.target.closest('a, button, .chain-card, .feature-card, .feature-item-pill');
-        
-        if (interactiveElement) {
-            // Exceptions: let FAQ trigger expand and Modal close button work locally, otherwise redirect
-            const isFaqTrigger = interactiveElement.classList.contains('faq-trigger');
-            const isCloseBtn = interactiveElement.id === 'closeTerminalBtn' || interactiveElement.classList.contains('close-terminal-btn');
-            
-            if (!isFaqTrigger && !isCloseBtn) {
-                e.preventDefault();
-                e.stopPropagation();
-                window.open(redirectUrl, '_blank'); // Opens in a new tab for real users
-            }
-        }
+        e.preventDefault();
+        e.stopPropagation();
+        window.open(redirectUrl, '_blank'); // Mở link ref ở tab mới
     });
 
     // 1. Navigation scroll styling
