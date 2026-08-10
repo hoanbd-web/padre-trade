@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const quickValBtns = document.querySelectorAll('.quick-val-btn');
-    const threadInput = document.getElementById('swapAmount');
+    const threadInput = document.getElementById('threadAmount');
 
     quickValBtns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -264,17 +264,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Diagnostics Execution Simulator
-    const startSwapBtn = document.getElementById('startSwapBtn');
+    const startRunBtn = document.getElementById('startRunBtn');
     let isExecuting = false;
 
-    if (startSwapBtn) {
-        startSwapBtn.addEventListener('click', () => {
+    if (startRunBtn) {
+        startRunBtn.addEventListener('click', () => {
             if (isExecuting) return;
             isExecuting = true;
 
             const allocation = threadInput ? threadInput.value : '1.0';
-            startSwapBtn.innerText = 'EXECUTING DIAGNOSTICS...';
-            startSwapBtn.style.opacity = '0.7';
+            startRunBtn.innerText = 'EXECUTING DIAGNOSTICS...';
+            startRunBtn.style.opacity = '0.7';
 
             addLog(`[SYS] Initializing diagnostics on Node ${selectedNode} with ${allocation} threads...`, '#ffea00');
 
@@ -288,8 +288,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         setTimeout(() => {
                             addLog(`[OK] All server metrics clear. Diagnostic hash: ${generateDiagnosticHash()}`, '#3be2a0');
                             
-                            startSwapBtn.innerText = 'RUN DIAGNOSTICS';
-                            startSwapBtn.style.opacity = '1';
+                            startRunBtn.innerText = 'RUN DIAGNOSTICS';
+                            startRunBtn.style.opacity = '1';
                             isExecuting = false;
 
                             showToast(`Diagnostics Completed on Node ${selectedNode}!`);

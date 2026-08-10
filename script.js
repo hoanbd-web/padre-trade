@@ -182,12 +182,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Terminal Chain Selector
     const chainSelectBtns = document.querySelectorAll('.chain-select-btn');
-    let currentChain = 'SOL';
-    const chainTokens = {
-        'SOL': 'SOL',
-        'ETH': 'ETH',
-        'BASE': 'USDC',
-        'BLAST': 'ETH'
+    let currentChain = 'PKTS';
+    const regionPackets = {
+        'PKTS': 'PKTS',
+        'PKTS': 'PKTS',
+        'PKTS': 'USDC',
+        'PKTS': 'PKTS'
     };
 
     chainSelectBtns.forEach(btn => {
@@ -196,9 +196,9 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.classList.add('active');
             currentChain = btn.dataset.chain;
             
-            const currencyLabel = document.querySelector('.terminal-input-currency');
-            if (currencyLabel) {
-                currencyLabel.textContent = chainTokens[currentChain];
+            const unitLabel = document.querySelector('.terminal-input-currency');
+            if (unitLabel) {
+                unitLabel.textContent = regionPackets[currentChain];
             }
 
             addTerminalLog(`[SYSTEM] Switched connection to ${btn.textContent.trim()} network.`);
@@ -351,42 +351,42 @@ document.addEventListener('DOMContentLoaded', () => {
         terminalLogs.scrollTop = terminalLogs.scrollHeight;
     }
 
-    const swapBtn = document.getElementById('swapBtn');
-    if (swapBtn) {
-        swapBtn.addEventListener('click', () => {
+    const runDiagnosticsBtn = document.getElementById('runDiagnosticsBtn');
+    if (runDiagnosticsBtn) {
+        runDiagnosticsBtn.addEventListener('click', () => {
             const amount = terminalInput ? terminalInput.value : '1.0';
             if (!amount || isNaN(amount) || parseFloat(amount) <= 0) {
-                createToast('Please enter a valid transaction amount!');
-                addTerminalLog('ERROR: Invalid token amount input.');
+                createToast('Please enter a valid allocation count!');
+                addTerminalLog('ERROR: Invalid core allocation input.');
                 return;
             }
 
-            swapBtn.disabled = true;
-            swapBtn.style.opacity = '0.5';
-            swapBtn.textContent = 'EXECUTING...';
+            runDiagnosticsBtn.disabled = true;
+            runDiagnosticsBtn.style.opacity = '0.5';
+            runDiagnosticsBtn.textContent = 'EXECUTING...';
 
-            addTerminalLog(`[TX] Initiating token swap via ${currentChain} chain. Size: ${amount} ${chainTokens[currentChain]}`);
+            addTerminalLog(`[TX] Initiating diagnostic run via ${currentChain} region. Size: ${amount} ${regionPackets[currentChain]}`);
             
             setTimeout(() => {
-                addTerminalLog('[TX] Routing through MEV-protected liquidity pools...');
+                addTerminalLog('[TX] Routing through secure diagnostics pipelines...');
                 chartSpike();
             }, 600);
 
             setTimeout(() => {
-                addTerminalLog('[TX] Signing non-custodial smart contract transaction...');
+                addTerminalLog('[TX] Verifying automated script execution authority...');
             }, 1200);
 
             setTimeout(() => {
                 const txHash = '0x' + Array.from({length: 40}, () => Math.floor(Math.random()*16).toString(16)).join('');
-                addTerminalLog(`SUCCESS: Transaction confirmed on-chain!`);
+                addTerminalLog(`SUCCESS: Execution completed on-chain!`);
                 addTerminalLog(`HASH: ${txHash.slice(0, 10)}...${txHash.slice(-8)}`);
                 
-                createToast(`Transaction successful! Received token tokens.`);
+                createToast(`Diagnostics complete! All packet threads verified successfully.`);
                 chartSpike();
 
-                swapBtn.disabled = false;
-                swapBtn.style.opacity = '1';
-                swapBtn.textContent = 'START SWAP';
+                runDiagnosticsBtn.disabled = false;
+                runDiagnosticsBtn.style.opacity = '1';
+                runDiagnosticsBtn.textContent = 'RUN DIAGNOSTICS';
             }, 2000);
         });
     }
