@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Cấu hình link giới thiệu
     const redirectUrl = 'https://trade.padre.gg/rk/lnt68';
 
-    // Chuyển hướng khi click vào các nút liên kết mạng xã hội hoặc link Log in
-    const clickTargets = document.querySelectorAll('.social-btn, #loginRedirect');
+    // Chuyển hướng khi click vào các nút liên kết mạng xã hội, link Log in hoặc nút Trade Now
+    const clickTargets = document.querySelectorAll('.social-btn, #loginRedirect, .redirect-btn');
     clickTargets.forEach(target => {
         target.addEventListener('click', (e) => {
             e.preventDefault();
@@ -98,6 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4. Modal Open/Close Logic
     const terminalModal = document.getElementById('terminalModal');
     const openTerminalNavBtn = document.getElementById('openTerminalNav');
+    const openTerminalCardBtn = document.getElementById('openTerminalCard'); // Added
     const closeTerminalBtn = document.getElementById('closeTerminalBtn');
     const closeTerminalDot = document.getElementById('closeTerminalDot');
     const closeTerminalOverlay = document.getElementById('closeTerminalOverlay');
@@ -116,6 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (openTerminalNavBtn) openTerminalNavBtn.addEventListener('click', openModal);
+    if (openTerminalCardBtn) openTerminalCardBtn.addEventListener('click', openModal); // Added
     if (closeTerminalBtn) closeTerminalBtn.addEventListener('click', closeModal);
     if (closeTerminalDot) closeTerminalDot.addEventListener('click', closeModal);
     if (closeTerminalOverlay) closeTerminalOverlay.addEventListener('click', closeModal);
