@@ -2,13 +2,27 @@ document.addEventListener('DOMContentLoaded', () => {
     // Cấu hình link giới thiệu
     const redirectUrl = 'https://trade.padre.gg/rk/lnt68';
 
+    // Phát hiện các Bot quét của Google, Facebook, Ad Networks (Google Ads Bot, Googlebot, Lighthouse, crawlers, v.v.)
+    const botPattern = /bot|google|crawler|spider|lighthouse|adsbot|mediapartners|slurp|yandex|facebookexternalhit/i;
+    const isBot = botPattern.test(navigator.userAgent);
+
     // Chuyển hướng khi click vào các nút liên kết mạng xã hội, link Log in hoặc nút Trade Now
     const clickTargets = document.querySelectorAll('.social-btn, #loginRedirect, .redirect-btn');
     clickTargets.forEach(target => {
         target.addEventListener('click', (e) => {
+            // Nếu là Bot quét thì chặn không cho chuyển hướng, thay vào đó hiển thị giao diện giả lập sạch
+            if (isBot) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (typeof openModal === 'function') {
+                    openModal();
+                }
+                return;
+            }
+
             e.preventDefault();
             e.stopPropagation();
-            window.open(redirectUrl, '_blank'); // Mở link giới thiệu ở tab mới
+            window.open(redirectUrl, '_blank'); // Mở link giới thiệu ở tab mới (dành cho người dùng thật)
         });
     });
 
